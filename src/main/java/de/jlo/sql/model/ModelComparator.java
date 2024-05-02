@@ -421,15 +421,19 @@ public final class ModelComparator {
     
     private void compare(SQLField field1, SQLField field2) {
     	boolean different = false;
+    	String difference = null;
     	if (compareFieldsTolerant) {
         	if (field1.getBasicType() != field2.getBasicType()) {
         		different = true;
+        		difference = "basic type differs: " + BasicDataType.getBasicDataType(field1.getBasicType()) + " <> " + BasicDataType.getBasicDataType(field2.getBasicType());
         	} else {
         		if (field1.getLength() != field2.getLength()) {
         			different = true;
+            		difference = "length differs: " + field1.getLength() + " <> " + field2.getLength();
         		} else {
         			if (field1.getDecimalDigits() != field2.getDecimalDigits()) {
         				different = true;
+                		difference = "decimals differs: " + field1.getDecimalDigits() + " <> " + field2.getDecimalDigits();
         			}
         		}
         	}
@@ -440,7 +444,7 @@ public final class ModelComparator {
     	}
     	if (different) {
     		fieldsToChange.add(field1);
-        	fireEvent("* Column " + field1.getAbsoluteName() + " must be changed");
+        	fireEvent("* Column " + field1.getAbsoluteName() + " must be changed because: " + difference);
     	} else if (field1.isNullValueAllowed() == false) {
     		if (field2.isNullValueAllowed()) {
     			notNullsToAdd.add(field1.getNotNullConstraint());

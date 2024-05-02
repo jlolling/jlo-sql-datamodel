@@ -16,13 +16,13 @@ public class BasicDataType {
     public static final BasicDataType DATE = new BasicDataType(1, "Date");
     public static final BasicDataType DOUBLE = new BasicDataType(2, "Double");
     public static final BasicDataType BINARY = new BasicDataType(3, "Binary");
+    public static final BasicDataType CLOB = new BasicDataType(4, "CLOB");
     public static final BasicDataType INTEGER = new BasicDataType(5, "Integer");
     public static final BasicDataType LONG = new BasicDataType(6, "Long");
-    public static final BasicDataType CLOB = new BasicDataType(4, "CLOB");
-    public static final BasicDataType ROWID = new BasicDataType(-100, "RowId");
     public static final BasicDataType SQLEXP = new BasicDataType(7, "SQL expression");
     public static final BasicDataType BOOLEAN = new BasicDataType(8, "Boolean");
     public static final BasicDataType UNKNOWN = new BasicDataType(99999, "Unknown");
+    public static final BasicDataType ROWID = new BasicDataType(-100, "RowId");
     
     private BasicDataType(int id, String name) {
         this.id = id;
